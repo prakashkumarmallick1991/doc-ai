@@ -411,113 +411,228 @@ def root() -> str:
         <title>DocOps AI MVP</title>
         <style>
           :root {
-            --bg: #0b1020;
-            --panel: #111827;
-            --panel-soft: #1f2937;
-            --line: #2d3748;
-            --text: #e5e7eb;
-            --muted: #94a3b8;
-            --primary: #60a5fa;
-            --accent: #34d399;
+            --bg: #07111f;
+            --bg-2: #0d1b2a;
+            --panel: rgba(17, 24, 39, 0.9);
+            --panel-2: rgba(15, 23, 42, 0.9);
+            --line: rgba(148, 163, 184, 0.2);
+            --text: #e5eefb;
+            --muted: #9fb3c8;
+            --primary: #7dd3fc;
+            --primary-strong: #3b82f6;
+            --success: #34d399;
             --warning: #fbbf24;
-            --shadow: 0 20px 40px rgba(15, 23, 42, 0.35);
+            --shadow: 0 22px 55px rgba(2, 6, 23, 0.55);
           }
           * { box-sizing: border-box; }
+          html { scroll-behavior: smooth; }
           body {
             margin: 0;
-            font-family: Inter, Arial, sans-serif;
-            background: linear-gradient(135deg, #0b1020, #111827 40%, #0f172a);
+            font-family: Inter, Segoe UI, Arial, sans-serif;
+            background: radial-gradient(circle at top, #13233c 0%, var(--bg) 32%, #040b14 100%);
             color: var(--text);
           }
+          a { color: inherit; text-decoration: none; }
           .container {
-            max-width: 1100px;
+            max-width: 1160px;
             margin: 0 auto;
-            padding: 56px 20px 80px;
+            padding: 28px 20px 80px;
+          }
+          .topbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            padding: 14px 0 24px;
+          }
+          .brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 700;
+            letter-spacing: 0.02em;
+          }
+          .brand-mark {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--success));
+            box-shadow: 0 0 18px rgba(125, 211, 252, 0.9);
+          }
+          .nav {
+            display: flex;
+            gap: 18px;
+            color: var(--muted);
+            font-size: 0.92rem;
           }
           .hero {
             display: grid;
             grid-template-columns: 1.1fr 0.9fr;
             gap: 24px;
             align-items: center;
-            margin-bottom: 24px;
+            padding: 28px 0 18px;
           }
           .eyebrow {
             display: inline-block;
-            background: rgba(96, 165, 250, 0.12);
+            background: rgba(125, 211, 252, 0.1);
             color: var(--primary);
-            padding: 6px 10px;
+            border: 1px solid rgba(125, 211, 252, 0.25);
             border-radius: 999px;
-            font-size: 12px;
-            letter-spacing: 0.08em;
+            padding: 7px 12px;
+            font-size: 11px;
+            letter-spacing: 0.12em;
             text-transform: uppercase;
-            margin-bottom: 16px;
+            margin-bottom: 18px;
           }
           h1 {
-            font-size: clamp(2.4rem, 5vw, 4rem);
             margin: 0 0 16px;
-            line-height: 1.05;
+            font-size: clamp(2.6rem, 5vw, 4.2rem);
+            line-height: 1.04;
+            letter-spacing: -0.06em;
           }
-          p {
+          .lead {
             color: var(--muted);
-            font-size: 1.02rem;
-            line-height: 1.7;
+            font-size: 1.08rem;
+            line-height: 1.8;
+            max-width: 620px;
+          }
+          .badge-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 24px;
+          }
+          .badge {
+            background: rgba(52, 211, 153, 0.08);
+            color: var(--success);
+            border: 1px solid rgba(52, 211, 153, 0.25);
+            border-radius: 999px;
+            padding: 7px 12px;
+            font-size: 12px;
           }
           .panel {
-            background: rgba(17, 24, 39, 0.88);
+            background: var(--panel);
             border: 1px solid var(--line);
-            border-radius: 18px;
+            border-radius: 20px;
             box-shadow: var(--shadow);
-            padding: 20px;
+            padding: 22px;
           }
           .stack {
             display: grid;
             gap: 16px;
-            margin-top: 24px;
           }
           label {
             display: block;
-            font-size: 0.82rem;
+            font-size: 0.8rem;
             color: var(--muted);
             margin-bottom: 8px;
-            letter-spacing: 0.01em;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
           }
           textarea, input {
             width: 100%;
-            background: rgba(15, 23, 42, 0.9);
-            color: var(--text);
             border: 1px solid var(--line);
             border-radius: 12px;
             padding: 12px 14px;
             font-size: 1rem;
+            background: rgba(15, 23, 42, 0.9);
+            color: var(--text);
           }
           textarea {
-            min-height: 140px;
+            min-height: 150px;
             resize: vertical;
           }
           .buttons {
             display: flex;
             flex-wrap: wrap;
             gap: 12px;
-            margin-top: 12px;
+            margin-top: 4px;
           }
           button {
             border: none;
-            border-radius: 10px;
+            border-radius: 12px;
             padding: 12px 18px;
             font-size: 0.96rem;
-            font-weight: 600;
+            font-weight: 700;
             color: white;
             cursor: pointer;
             transition: transform 0.15s ease, opacity 0.15s ease;
           }
           button:hover { transform: translateY(-1px); opacity: 0.98; }
-          .primary { background: linear-gradient(135deg, var(--primary), #3b82f6); }
-          .secondary { background: linear-gradient(135deg, var(--accent), #10b981); }
-          .grid {
+          .primary { background: linear-gradient(135deg, var(--primary-strong), #2563eb); }
+          .secondary { background: linear-gradient(135deg, var(--success), #10b981); }
+          .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 18px;
+            margin-top: 30px;
+          }
+          .feature {
+            background: var(--panel-2);
+            border: 1px solid var(--line);
+            border-radius: 18px;
+            padding: 20px;
+          }
+          .feature h3 {
+            margin: 0 0 10px;
+            font-size: 1.06rem;
+          }
+          .feature p {
+            margin: 0;
+            color: var(--muted);
+            line-height: 1.7;
+          }
+          .section {
+            margin-top: 54px;
+          }
+          .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: end;
+            gap: 16px;
+            margin-bottom: 18px;
+          }
+          .section-header h2 {
+            margin: 0;
+            font-size: clamp(1.7rem, 3vw, 2.4rem);
+            letter-spacing: -0.04em;
+          }
+          .section-header p {
+            margin: 0;
+            color: var(--muted);
+          }
+          .steps {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 18px;
+          }
+          .step {
+            background: rgba(17, 24, 39, 0.8);
+            border: 1px solid var(--line);
+            border-radius: 16px;
+            padding: 20px;
+          }
+          .step-num {
+            width: 28px;
+            height: 28px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(125, 211, 252, 0.12);
+            color: var(--primary);
+            border: 1px solid rgba(125, 211, 252, 0.2);
+            font-weight: 700;
+            margin-bottom: 14px;
+          }
+          .results {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 18px;
-            margin-top: 18px;
+            margin-top: 26px;
+          }
+          .results h3 {
+            margin-top: 0;
           }
           pre {
             white-space: pre-wrap;
@@ -532,33 +647,47 @@ def root() -> str:
             font-size: 0.82rem;
             line-height: 1.6;
           }
-          .badge-row {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-top: 18px;
+          .roadmap {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: grid;
+            gap: 12px;
           }
-          .badge {
-            background: rgba(52, 211, 153, 0.08);
-            color: var(--accent);
-            border: 1px solid rgba(52, 211, 153, 0.3);
-            border-radius: 999px;
-            padding: 6px 10px;
-            font-size: 12px;
+          .roadmap li {
+            background: rgba(17, 24, 39, 0.8);
+            border: 1px solid var(--line);
+            border-radius: 12px;
+            padding: 14px 16px;
+            color: var(--muted);
           }
-          @media (max-width: 800px) {
-            .hero, .grid { grid-template-columns: 1fr; }
+          .roadmap strong { color: var(--text); }
+          @media (max-width: 900px) {
+            .hero, .feature-grid, .steps, .results { grid-template-columns: 1fr; }
+            .topbar, .section-header { flex-direction: column; align-items: flex-start; }
           }
         </style>
       </head>
       <body>
         <div class=\"container\">
+          <div class=\"topbar\">
+            <div class=\"brand\">
+              <span class=\"brand-mark\"></span>
+              <span>DocOps AI</span>
+            </div>
+            <div class=\"nav\">
+              <a href=\"#features\">Features</a>
+              <a href=\"#workflow\">Workflow</a>
+              <a href=\"#roadmap\">Roadmap</a>
+            </div>
+          </div>
+
           <div class=\"hero\">
             <div>
               <div class=\"eyebrow\">Public DocOps</div>
               <h1>DocOps AI MVP</h1>
-              <p>Turn repo changes into docs-ready PRs.</p>
-              <p>
+              <p class=\"lead\">Turn repo changes into docs-ready PRs.</p>
+              <p class=\"lead\">
                 Analyze product changes, find the documentation that is likely affected,
                 draft a documentation update, and generate a human-reviewable pull request.
               </p>
@@ -587,7 +716,63 @@ def root() -> str:
             </div>
           </div>
 
-          <div class=\"grid\">
+          <section id=\"features\" class=\"section\">
+            <div class=\"section-header\">
+              <h2>Built for public-facing documentation workflows</h2>
+            </div>
+            <div class=\"feature-grid\">
+              <div class=\"feature\">
+                <h3>Impact analysis</h3>
+                <p>Find the docs most likely to be affected by an API or product change before a writer starts editing.</p>
+              </div>
+              <div class=\"feature\">
+                <h3>Draft generation</h3>
+                <p>Convert a product change into a useful documentation update with examples, parameter notes, and PR-ready copy.</p>
+              </div>
+              <div class=\"feature\">
+                <h3>PR automation</h3>
+                <p>Generate a reviewable pull request structure for docs teams, reducing friction between engineering and writers.</p>
+              </div>
+            </div>
+          </section>
+
+          <section id=\"workflow\" class=\"section\">
+            <div class=\"section-header\">
+              <h2>How it works</h2>
+            </div>
+            <div class=\"steps\">
+              <div class=\"step\">
+                <div class=\"step-num\">1</div>
+                <h3>Describe the change</h3>
+                <p>Paste a change summary, API diff, or product update that needs documentation coverage.</p>
+              </div>
+              <div class=\"step\">
+                <div class=\"step-num\">2</div>
+                <h3>Analyze affected docs</h3>
+                <p>Map the change to likely files, system references, and impacted sections of the docs.</p>
+              </div>
+              <div class=\"step\">
+                <div class=\"step-num\">3</div>
+                <h3>Draft a PR</h3>
+                <p>Generate a docs update and a review-ready pull request you can use with a human in the loop.</p>
+              </div>
+            </div>
+          </section>
+
+          <section id=\"roadmap\" class=\"section\">
+            <div class=\"section-header\">
+              <h2>Next public-ready improvements</h2>
+            </div>
+            <ul class=\"roadmap\">
+              <li><strong>Real repo ingestion:</strong> support public GitHub URLs and fetch change context directly from repositories.</li>
+              <li><strong>GitHub OAuth and PAT flow:</strong> let users connect their account and create pull requests without manual setup.</li>
+              <li><strong>Model routing:</strong> switch between local Ollama and hosted models for better availability and quality.</li>
+              <li><strong>Usage analytics:</strong> track impact analysis, docs generated, and PRs created for product feedback.</li>
+              <li><strong>Better UX:</strong> markdown preview, collapsible sections, and a cleaner launch page for non-technical users.</li>
+            </ul>
+          </section>
+
+          <div class=\"results\">
             <div class=\"panel\">
               <h3>Impact analysis</h3>
               <pre id=\"analysis-output\">No analysis yet.</pre>
