@@ -1,0 +1,17 @@
+site_name: DocOps AI MVP
+site_description: Local-first documentation automation platform
+
+theme:
+  name: material
+
+nav:
+  - Home: index.md
+  - API Reference:
+      - Users API: api/users.md
+  - Guides:
+      - User management: guides/user-management.md
+
+markdown_extensions:
+  - admonition
+  - pymdownx.superfences
+  - tables

@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: docops-ai-mvp
+    env: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: python -m uvicorn backend.app.main:app --host 0.0.0.0 --port 10000
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.0
+      - key: GITHUB_TOKEN
+        sync: false
